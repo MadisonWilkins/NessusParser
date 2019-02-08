@@ -1,0 +1,17 @@
+{
+    "default" : {
+        "fields": ["risk_factor", "plugin_name", "fname", "description"],
+        "risk": ["Low", "Medium", "High", "Critical"],
+        "options" : ["Ignore", "Address"]
+    },
+    "critical" : {
+        "fields": ["plugin_name", "fname", "description"],
+        "risk": ["Critical"],
+        "options" : ["Ignore", "Address"]
+    },
+    "highs" : {
+        "fields": ["plugin_name", "fname", "description"],
+        "risk": ["High"],
+        "options" : ["Ignore", "Address"]
+    }
+}
