@@ -1,7 +1,7 @@
 {
     "default" : {
-        "fields": ["risk_factor", "plugin_name", "fname", "description"],
-        "risk": ["Low", "Medium", "High", "Critical"],
+        "fields": ["port", "risk_factor", "solution", "description"],
+        "risk": ["High", "Critical"],
         "options" : ["Ignore", "Address"]
     },
     "critical" : {

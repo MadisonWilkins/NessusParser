@@ -49,8 +49,12 @@ def prettyPrint(item, data):
     print(lineBreak)
     thingsToPrint = data['fields']
     for thing in thingsToPrint:
-        element = untangle.Element.get_elements(item, name=thing)
-        text = str(thing) + ": " + str(element[0].cdata)
+        try:
+            element = untangle.Element.get_elements(item, name=thing)
+            text = str(thing) + ": " + str(element[0].cdata)
+        except:
+            element = item[thing]
+            text = str(thing) + ": " + str(element)
         print(textwrap.fill(text, 80))
     
     # ask what to do with em
@@ -72,6 +76,8 @@ def getResponse(data):
         if option >= 0 and option < len(data['options']):
             action = data['options'][option]
             break
+        elif option == -22:
+            sys.exit(0)
         else:
             print("Invalid selection. Choose from shown options.")
     
@@ -84,7 +90,10 @@ def handleResponse(response, item, data):
     thingsToPrint = data['fields']
     for thing in thingsToPrint:
         element = untangle.Element.get_elements(item, name=thing)
-        text = str(thing) + ": " + str(element[0].cdata)
+        try:
+            text = str(thing) + ": " + str(element[0].cdata)
+        except:
+            text = str(thing) + ": " + str(element)
         f.write(textwrap.fill(text, 80) + "\n")
     f.close()
     return
