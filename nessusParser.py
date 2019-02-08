@@ -51,10 +51,10 @@ def prettyPrint(item, data):
     for thing in thingsToPrint:
         try:
             element = untangle.Element.get_elements(item, name=thing)
-            text = str(thing) + ": " + str(element[0].cdata)
+            text = "- " + str(thing) + ": " + str(element[0].cdata)
         except:
             element = item[thing]
-            text = str(thing) + ": " + str(element)
+            text = "- " + str(thing) + ": " + str(element)
         print(textwrap.fill(text, 80))
     
     # ask what to do with em
@@ -91,9 +91,9 @@ def handleResponse(response, item, data):
     for thing in thingsToPrint:
         element = untangle.Element.get_elements(item, name=thing)
         try:
-            text = str(thing) + ": " + str(element[0].cdata)
+            text = "- " + str(thing) + ": " + str(element[0].cdata)
         except:
-            text = str(thing) + ": " + str(element)
+            text = "- " + str(thing) + ": " + str(element)
         f.write(textwrap.fill(text, 80) + "\n")
     f.close()
     return
